@@ -18,7 +18,7 @@ jobs:
 
       # 2. Sua Action chamando o template padrão
       - name: Post PR comment
-        uses: Malnati/pr-comment@v4.0.2
+        uses: Malnati/pr-comment@v4.0.4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr_number: ${{ github.event.pull_request.number }}
@@ -37,7 +37,7 @@ jobs:
 
       # 2. Sua Action chamando o template custom
       - name: Post PR comment
-        uses: Malnati/pr-comment@v4.0.2
+        uses: Malnati/pr-comment@v4.0.4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr_number: ${{ github.event.pull_request.number }}
