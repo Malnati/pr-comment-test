@@ -1,0 +1,31 @@
+# .github/workflows/pr-comment.yml
+name: "Example PR comment"
+
+on:
+  pull_request:
+
+permissions:
+  contents: read        # Necessário para ler o repo
+  pull-requests: write  # Necessário para comentar na PR
+  
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post PR comment
+        uses: Malnati/pr-comment@v4.0.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pr_number: ${{ github.event.pull_request.number }}
+          header_actor: ${{ github.actor }}
+          header_title: "🔁 auto-sync"
+          header_subject: "Sincronização de branches"
+          body_message: |
+            Resultado da sincronização automática entre branches.
+          body_scope: |
+            - base: `${{ github.event.pull_request.base.ref }}`
+            - head: `${{ github.event.pull_request.head.ref }}`
+          body_todo: |
+            - Revisar conflitos (se houver).
+          footer_result: "Sincronização concluída."
+          footer_advise: "Verifique o diff antes de fazer o merge."
