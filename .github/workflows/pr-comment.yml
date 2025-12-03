@@ -4,6 +4,10 @@ name: "Example PR comment"
 on:
   pull_request:
 
+permissions:
+  contents: read        # Necessário para ler o repo
+  pull-requests: write  # Necessário para comentar na PR
+  
 jobs:
   comment:
     runs-on: ubuntu-latest
