@@ -5,13 +5,18 @@ on:
   pull_request:
 
 permissions:
-  contents: read        # Necessário para ler o repo
-  pull-requests: write  # Necessário para comentar na PR
-  
+  contents: read
+  pull-requests: write
+
 jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
+      # 1. IMPORTANTE: Checkout é obrigatório para ler o arquivo local
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Sua Action chamando o template
       - name: Post PR comment
         uses: Malnati/pr-comment@v4.0.1
         with:
@@ -21,11 +26,14 @@ jobs:
           header_title: "🔁 auto-sync"
           header_subject: "Sincronização de branches"
           body_message: |
-            Resultado da sincronização automática entre branches.
+            Este é um teste usando um **arquivo Markdown local** como template.
           body_scope: |
             - base: `${{ github.event.pull_request.base.ref }}`
             - head: `${{ github.event.pull_request.head.ref }}`
           body_todo: |
-            - Revisar conflitos (se houver).
-          footer_result: "Sincronização concluída."
-          footer_advise: "Verifique o diff antes de fazer o merge."
+            - Validar se o layout mudou.
+          footer_result: "Template carregado com sucesso."
+          footer_advise: "Nenhuma ação requerida."
+          
+          # 3. Caminho relativo à raiz do repositório
+          template_path: ".github/templates/custom.md"
