@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Post PR comment
-        uses: Malnati/pr-comment@v4.0.0
+        uses: Malnati/pr-comment@v4.0.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr_number: ${{ github.event.pull_request.number }}
