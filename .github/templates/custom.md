@@ -10,16 +10,6 @@
 </div>
 
 
-
-## foo 2
-bla bla bla
-### foo 3
-bla bla bla
-#### foo 4
-bla bla bla
-##### foo 5
-bla bla bla
-
 ###### ℹ Info
 ${BODY_MESSAGE}
 
@@ -29,8 +19,7 @@ ${BODY_SCOPE_BLOCK}
 ${BODY_TODO_BLOCK}
 
 ${FOOTER_BLOCK}
-
-<hr>
+######
 <div align="right">
   <sub>
     🤖 Automated by <a href="https://github.com/Malnati/pr-comment">Malnati/pr-comment</a> 🤍
